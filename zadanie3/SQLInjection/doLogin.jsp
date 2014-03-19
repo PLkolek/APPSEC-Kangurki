@@ -10,12 +10,16 @@
 		
 		if (connection != null) {
 			String query = "SELECT * FROM USERS where username=\'" + sUserID+"\' AND password=\'"+sPassword+"\';";
-			
 			Statement stmt = null;
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			if(!rs.next())
+			if(!rs.next()){
 				message="Login failed";
+			}
+			else {
+				 message = "Twoje dane to: "+rs.getString(3);
+				 session.setAttribute("username", rs.getString(2));
+			}
 			response.sendRedirect("login.jsp?error="+message);
 		} else {
 			message="No connection" ;

