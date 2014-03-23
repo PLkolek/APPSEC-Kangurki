@@ -1,0 +1,16 @@
+Dlaczego nie uda³o mi siê zhakowaæ GWT?
+-wywo³ania GWT-RPC s¹ POSTami, nie mo¿na po prostu wys³aæ linku ze z³oœliwymi parametrami
+-akceptowalny content-type to tylko text/x-gwt-rpc, wiêc zrobienie form na stronie atakuj¹cego 
+	z submituj¹cym javascriptem nic nie daje
+-POST request z Javascriptu ze zmodyfikowanym content-type do innej domeny jest preflightowany przez przegl¹darkê, 
+	a GWT nie akceptuje zapytañ z innych domen
+	-ew. mo¿liwoœci - upload flasha na dozwolon¹ domenê, b³¹d w konfiguracji
+-Flash POTRAFI£ puœciæ prawie dowolny request pod dowoln¹ domenê, ale niestety (na szczêœcie?) ju¿ nie potrafi
+-Flash pozwala ustawiæ header HTTP którego nie ma na czarnej liœcie. X-GWT-Permutation tam nie ma
+-X-GWT-Permutation HTTP header w wywo³aniach GWT-RPC, kolejny powód dlaczego form to za ma³o
+-X-GWT-Permutation is not unique or tied to a user’s session
+
+Konfiguracja w web.xml
+Konfiguracja w service, impl i kliencie
+
+Z tego co czyta³em Same Origin Policy przepuszcza XHRy GET oraz post ze standardowym content-type.
