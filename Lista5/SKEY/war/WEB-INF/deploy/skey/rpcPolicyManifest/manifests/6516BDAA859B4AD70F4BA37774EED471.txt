@@ -1,2 +1,0 @@
-serviceClass: appsec.kangurki.client.GreetingService
-path: D366DF3724198DE80DF0982EF4D7A52E.gwt.rpc
