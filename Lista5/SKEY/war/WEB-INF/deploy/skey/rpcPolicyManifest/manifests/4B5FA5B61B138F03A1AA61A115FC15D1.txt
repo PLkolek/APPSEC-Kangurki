@@ -1,0 +1,2 @@
+serviceClass: appsec.kangurki.client.LoginService
+path: 9E3279E5D83A6C28E750E4FF408AB24A.gwt.rpc
